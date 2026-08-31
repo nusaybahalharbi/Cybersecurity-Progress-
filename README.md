@@ -12,33 +12,37 @@ Live site: <https://nusaybahalharbi.github.io/Cybersecurity-Progress-/>
 
 ## What's in it
 
-Eight sections, each reachable from the fixed header:
+Nine sections, each reachable from the fixed header, ordered as an executive narrative:
 
-| Section | Contents |
-|---|---|
-| **Home** | Branding, report title, reporting date, confidentiality classification, executive summary, **View Progress** button |
-| **Executive Summary** | Animated KPI cards, delivery ring, status distribution, the two completed milestones |
-| **Progress** | All 12 initiatives plus 2 completed milestones — filterable by status, each opening a detail modal |
-| **Roadmap** | Visual timeline: completed milestones with confirmed dates, then Stages 1–3 |
-| **Solutions** | Interactive solution cards with status, purpose, value and stage; budget by category and by component |
-| **Documentation** | The 13 → 57 documentation milestone with animated counters, governance achievements and outstanding assurance |
-| **Team** | The two SAMA-required roles; DFIR / SOC L2 Specialist marked **Recruitment completed**, joining 1 September 2026 |
-| **Next Steps** | Achievements, risks, dependencies, next steps, and the decisions required from the Executive Committee |
+| # | Section | Narrative role |
+|---|---|---|
+| 1 | **Home** | Starting position, business value, headline figures, Enter Executive Dashboard |
+| 2 | **Executive Summary** | Current posture — KPI cards, delivery ring, status distribution |
+| 3 | **Overview** | Achieved / Being implemented / Remaining / Needs management support |
+| 4 | **Progress** | Active initiatives — 14 filterable cards with detail modals |
+| 5 | **Roadmap** | Sequence and milestones — clickable timeline with a status legend |
+| 6 | **Solutions** | Solutions, capabilities and the approved FY2026 investment |
+| 7 | **Documentation** | Achievements — the 13 → 57 milestone and governance evidence |
+| 8 | **Team** | Team development — the two SAMA-required roles |
+| 9 | **Next Steps** | Risks, dependencies, priorities and decisions required |
 
 ### Interaction
 
 | Feature | How |
 |---|---|
-| Navigate | Header buttons, side dots (desktop), or **← / →** |
-| Presentation mode | **P**, the ▶ header button, or **Presentation mode** on the landing page. One section per screen with Previous / Next controls and a section counter. **Esc** exits. |
+| Navigate | Header buttons, side dots (desktop), or **← / →**, **Page Up / Page Down**, **Home / End** |
+| Presentation mode | **P**, the **Presentation Mode** header button, or the landing-page button. Each section fills the screen, with the section name, "Section n of 9", an overall progress bar, and a discreet control bar. **Esc** exits. |
 | Full screen | **F** or the ⛶ header button |
 | Print / PDF | **🖨** header button, or **Ctrl/Cmd + P** |
 | Initiative details | Click any initiative card. **Esc** or click outside to close. |
-| Filter initiatives | All · Completed · In Delivery · In Procurement · In Progress · Blocked |
+| Filter initiatives | All · Completed · In Delivery · In Procurement · In Progress · Planned · Blocked, with **Reset filters** |
+| Roadmap details | Click any milestone to open its reporting period, scope and dependencies |
 | Position indicator | Progress bar across the top, plus the active nav button and side dots |
 
-Everything is real HTML text — selectable, searchable with Ctrl+F, and readable by screen
-readers. There are no slide screenshots anywhere: the only image file in the project is
+All KPI figures are written into the markup and animated from zero on first view only, so
+the numbers stay correct and visible with JavaScript disabled or `prefers-reduced-motion`
+set. Everything is real HTML text — selectable, searchable with Ctrl+F, and readable by
+screen readers. There are no slide screenshots anywhere: the only image file in the project is
 the Muhlah logo. All icons are inline SVG and all charts, bars, rings and timelines are
 CSS and SVG components.
 
@@ -193,7 +197,8 @@ records before the figures are used externally.
 
 ## Browser support
 
-Current Chrome, Edge, Firefox and Safari on desktop, tablet and phone. Requires CSS custom
+Current Chrome, Edge, Firefox and Safari. Layout verified with no horizontal scrolling and
+no clipped cards at 1920×1080, 1366×768, 1024×768, 768×1024 and 390×844. Requires CSS custom
 properties and the Fullscreen API. Respects `prefers-reduced-motion`: animations and
 smooth scrolling are disabled automatically for viewers who ask for that. No internet
 connection is needed once the files are on disk.

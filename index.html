@@ -49,6 +49,7 @@
   </defs>
 </svg>
 
+<a class="skip-link" href="#home">Skip to content</a>
 <div id="scrollbar"></div>
 
 <!-- ====================================================================
@@ -66,6 +67,7 @@
   <nav id="nav" aria-label="Primary">
     <a href="#home" data-nav="home">Home</a>
     <a href="#summary" data-nav="summary">Executive Summary</a>
+    <a href="#overview" data-nav="overview">Overview</a>
     <a href="#progress" data-nav="progress">Progress</a>
     <a href="#roadmap" data-nav="roadmap">Roadmap</a>
     <a href="#solutions" data-nav="solutions">Solutions</a>
@@ -75,7 +77,7 @@
   </nav>
 
   <div class="head-tools">
-    <button class="icon-btn" id="present-btn" type="button" title="Presentation mode (P)" aria-label="Enter presentation mode"><svg><use href="#i-play"></use></svg></button>
+    <button class="icon-btn" id="present-btn" type="button" title="Presentation mode (P)" aria-label="Enter presentation mode"><svg><use href="#i-play"></use></svg><span class="plabel">Presentation Mode</span></button>
     <button class="icon-btn" id="fs-btn" type="button" title="Full screen (F)" aria-label="Toggle full screen"><svg><use href="#i-expand"></use></svg></button>
     <button class="icon-btn" id="print-btn" type="button" title="Print / export PDF" aria-label="Print or export to PDF"><svg><use href="#i-print"></use></svg></button>
     <button class="icon-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><svg><use href="#i-menu"></use></svg></button>
@@ -95,34 +97,52 @@
       <img class="hero-mark" src="assets/muhlah-logo.png" alt="Muhlah" width="78" height="63">
       <p class="kicker">Executive Progress Report</p>
       <h1 id="home-h">Cybersecurity <em>Transformation</em></h1>
-      <p class="lede">Progress since June 2026 · governance documentation · approved FY2026 budget and resourcing. Six of twelve initiatives have moved into delivery, the FY2026 budget is approved and procurement is under way.</p>
+      <div class="hero-rule" aria-hidden="true"></div>
+      <p class="message">Muhlah began this programme in June 2026 with <strong>13 cybersecurity documents</strong> and no formal governance set. Today the company holds <strong>57</strong>, covering <strong>54 SAMA CSF subdomains</strong>, with <strong>six of twelve initiatives in delivery</strong>, the <strong>FY2026 budget approved</strong>, and forensic capacity secured. The business value is straightforward: Muhlah can now evidence its controls to the regulator, investigate a serious incident in-house, and remove information from retired assets with proof.</p>
+
+      <div class="headline-figures" role="group" aria-label="Headline documentation figures">
+        <div class="hf">
+          <div class="v" data-count="57">57</div>
+          <div class="l">Cybersecurity Documents</div>
+        </div>
+        <div class="hf">
+          <div class="v" data-count="44" data-prefix="+">+44</div>
+          <div class="l">New Documents</div>
+        </div>
+        <div class="hf">
+          <div class="v" data-count="338" data-prefix="≈" data-suffix="%">≈338%</div>
+          <div class="l">Documentation Growth</div>
+        </div>
+      </div>
+
       <div class="meta-row">
         <span class="meta conf">Confidential · Board &amp; ExCo</span>
         <span class="meta">Reporting date · 24 Aug 2026</span>
         <span class="meta">Nusaybah Alharbi · Cybersecurity Lead</span>
       </div>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#summary">View Progress <svg><use href="#i-arrow"></use></svg></a>
-        <button class="btn" type="button" data-present-start>Presentation mode <svg><use href="#i-play"></use></svg></button>
+        <a class="btn btn-primary" href="#summary">Enter Executive Dashboard <svg><use href="#i-arrow"></use></svg></a>
+        <button class="btn" type="button" data-present-start>Presentation Mode <svg><use href="#i-play"></use></svg></button>
         <a class="btn" href="#next">Decisions required</a>
       </div>
     </div>
 
-    <aside class="hero-aside" aria-label="Headline figures">
+    <aside class="hero-aside" aria-label="Programme at a glance">
+      <p class="aside-title">At a glance</p>
       <div class="hero-stat">
-        <span class="v cyan" data-count="6" data-suffix="/12">0</span>
+        <span class="v cyan" data-count="6" data-suffix="/12">6/12</span>
         <span class="l">Initiatives now in delivery</span>
       </div>
       <div class="hero-stat">
-        <span class="v green" data-count="57">0</span>
-        <span class="l">Cybersecurity documents, up from a baseline of 13</span>
+        <span class="v green"><span class="from" style="color:var(--steel-dim)">13</span> <span style="color:var(--cyan-400);font-weight:400">→</span> 57</span>
+        <span class="l">Cybersecurity documents, from baseline to today</span>
       </div>
       <div class="hero-stat">
-        <span class="v" data-count="665000" data-prefix="SAR ">0</span>
+        <span class="v" data-count="665000" data-prefix="SAR ">SAR 665,000</span>
         <span class="l">FY2026 cybersecurity budget · approved</span>
       </div>
       <div class="hero-stat">
-        <span class="v green"><svg style="width:30px;height:30px" aria-hidden="true"><use href="#i-check"></use></svg></span>
+        <span class="v green" aria-hidden="true"><svg style="width:28px;height:28px"><use href="#i-check"></use></svg></span>
         <span class="l">DFIR / SOC L2 Specialist recruitment completed · joining 1 September 2026</span>
       </div>
     </aside>
@@ -133,30 +153,38 @@
      2 · EXECUTIVE DASHBOARD
      ==================================================================== -->
 <section class="section" id="summary" aria-labelledby="summary-h">
-  <p class="eyebrow reveal">02 · Executive Summary</p>
+  <p class="eyebrow reveal"><span class="step">2</span> Current Posture <span class="src">Source · 02 Executive Summary</span></p>
   <h2 class="sec-title reveal" id="summary-h">Where We Stand Today</h2>
   <p class="sec-lede reveal">Six of twelve initiatives have moved into delivery. The FY2026 budget is approved and procurement is under way · no initiative is presented as complete.</p>
 
   <div class="grid g4 kpi-grid reveal">
     <article class="kpi">
       <div class="ico"><svg><use href="#i-doc"></use></svg></div>
-      <div class="v" data-count="55">0</div>
+      <p class="cap">Governance</p>
+      <div class="v" data-count="55">55</div>
       <p class="l">Governance documents developed</p>
+      <p class="foot">53 pending approval</p>
     </article>
     <article class="kpi">
       <div class="ico"><svg><use href="#i-shield"></use></svg></div>
-      <div class="v" data-count="54">0</div>
+      <p class="cap">Regulatory coverage</p>
+      <div class="v" data-count="54">54</div>
       <p class="l">SAMA CSF subdomains covered</p>
+      <p class="foot">Coverage evidenced by the document set</p>
     </article>
     <article class="kpi">
       <div class="ico"><svg><use href="#i-bolt"></use></svg></div>
-      <div class="v cyan" data-count="6">0</div>
+      <p class="cap">Delivery</p>
+      <div class="v cyan" data-count="6">6</div>
       <p class="l">Of 12 initiatives now in delivery</p>
+      <p class="foot">No initiative is presented as complete</p>
     </article>
     <article class="kpi">
       <div class="ico"><svg><use href="#i-users"></use></svg></div>
-      <div class="v" data-count="2">0</div>
-      <p class="l">Specialist roles in recruitment</p>
+      <p class="cap">Resourcing</p>
+      <div class="v" data-count="2">2</div>
+      <p class="l">Specialist roles required by the SAMA framework</p>
+      <p class="foot">1 completed · 1 continuing</p>
       <div class="sub"><span class="badge b-green done">DFIR / SOC L2 completed</span></div>
     </article>
   </div>
@@ -164,7 +192,7 @@
   <div class="panel ring-panel reveal" style="margin-bottom:18px;">
     <div class="ring" role="img" aria-label="6 of 12 initiatives, 50 percent, have moved into delivery">
       <svg viewBox="0 0 140 140"><circle class="track" cx="70" cy="70" r="61"></circle><circle class="bar" cx="70" cy="70" r="61" data-ring="50"></circle></svg>
-      <span class="lbl"><span class="n" data-count="50" data-suffix="%">0</span><span class="t">In delivery</span></span>
+      <span class="lbl"><span class="n" data-count="50" data-suffix="%">50%</span><span class="t">In delivery</span></span>
     </div>
     <div class="dist">
       <p style="font-size:13.5px;color:var(--steel);margin-bottom:2px;">Twelve initiatives by current status</p>
@@ -229,20 +257,117 @@
 </section>
 
 <!-- ====================================================================
+     2b · EXECUTIVE PROGRESS OVERVIEW
+     ==================================================================== -->
+<section class="section" id="overview" aria-labelledby="overview-h">
+  <p class="eyebrow reveal"><span class="step">3</span> Executive Progress Overview <span class="src">Starting position → today</span></p>
+  <h2 class="sec-title reveal" id="overview-h">From Where We Started to Where We Are</h2>
+  <p class="sec-lede reveal">The programme began in June 2026 with 13 cybersecurity documents and no formal governance set. This is what has been achieved, what is being implemented now, what remains, and where management support is needed. Every item below is taken from the source report — no maturity scores, completion percentages or dates have been assigned beyond those stated in it.</p>
+
+  <div class="panel reveal" style="margin-bottom:var(--s5);">
+    <p class="aside-title" style="margin-bottom:var(--s3);">Starting position · June 2026</p>
+    <div class="doc-compare" style="justify-content:flex-start;gap:clamp(14px,3vw,44px);">
+      <div class="doc-node from">
+        <div class="v" style="font-size:clamp(38px,4.4vw,58px)" data-count="13">13</div>
+        <div class="c">Cybersecurity documents at start</div>
+      </div>
+      <div class="doc-arrow" aria-hidden="true" style="flex:0 1 200px;"><span class="ln"></span><span class="hd"></span></div>
+      <div class="doc-node to">
+        <div class="v" style="font-size:clamp(38px,4.4vw,58px)" data-count="57">57</div>
+        <div class="c">Cybersecurity documents today</div>
+      </div>
+      <div style="flex:1 1 220px;min-width:200px;">
+        <p style="font-size:14.5px;color:var(--ice);line-height:1.6;">44 new documents developed — approximately <strong style="color:var(--green)">338% growth</strong> from the original baseline. Twelve initiatives were defined; six have since moved into delivery and the FY2026 budget has been approved.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="overview-grid reveal">
+    <article class="ov done">
+      <div class="ov-head">
+        <span class="ov-ico"><svg><use href="#i-check"></use></svg></span>
+        <h3>Achieved</h3>
+        <span class="ov-count">6</span>
+      </div>
+      <ul>
+        <li>Documentation grown 13 → 57 · 44 new documents, ≈338% growth</li>
+        <li>55 governance documents developed, covering 54 SAMA CSF subdomains</li>
+        <li>DFIR / SOC L2 Specialist recruitment completed · joining 1 September 2026</li>
+        <li>FY2026 cybersecurity budget approved · SAR 665,000</li>
+        <li>Secure disposal covered — BitRaser hardware plus DiPu destruction service</li>
+        <li>Netskope pilot configuration completed</li>
+      </ul>
+    </article>
+
+    <article class="ov now">
+      <div class="ov-head">
+        <span class="ov-ico"><svg><use href="#i-bolt"></use></svg></span>
+        <h3>Being implemented</h3>
+        <span class="ov-count">6</span>
+      </div>
+      <ul>
+        <li>Netskope phased deployment</li>
+        <li>ManageEngine ServiceDesk Plus implementation</li>
+        <li>Joiner–Mover–Leaver workflow — mover and leaver stages</li>
+        <li>DiPu governance and SAMA readiness engagement</li>
+        <li>Document approval and publication</li>
+        <li>Cybersecurity Architect recruitment</li>
+      </ul>
+    </article>
+
+    <article class="ov left">
+      <div class="ov-head">
+        <span class="ov-ico"><svg><use href="#i-link"></use></svg></span>
+        <h3>Remaining</h3>
+        <span class="ov-count">8</span>
+      </div>
+      <ul>
+        <li>53 of 55 governance documents pending approval</li>
+        <li>GRC platform — vendor selection and contracting</li>
+        <li>VA, penetration testing and red teaming — vendor selection</li>
+        <li>Asset discovery tool · DLP, classification and whitelisting · awareness platform</li>
+        <li>Network segmentation and managed switches</li>
+        <li>Network Detection and Response — follows segmentation</li>
+        <li>DDoS and DoS protection validation</li>
+        <li>Business Impact Analysis and continuity · SAMA CSF ML3 external assessment</li>
+      </ul>
+    </article>
+
+    <article class="ov support">
+      <div class="ov-head">
+        <span class="ov-ico"><svg><use href="#i-alert"></use></svg></span>
+        <h3>Needs management support</h3>
+        <span class="ov-count">3</span>
+      </div>
+      <ul>
+        <li>Headcount confirmation and offer approval for the Cybersecurity Architect, so strong candidates are not lost</li>
+        <li>Procurement and contracting speed — execution, not funding, is now the constraint</li>
+        <li>Approval and publication of the governance documentation</li>
+      </ul>
+    </article>
+  </div>
+
+  <p class="note">Counts above reflect the items listed in each column and are drawn from the source report. “Being implemented” means work has started and is progressing — it does not mean complete.</p>
+</section>
+
+<!-- ====================================================================
      3 · INITIATIVE PROGRESS (filters + modals)
      ==================================================================== -->
 <section class="section" id="progress" aria-labelledby="progress-h">
-  <p class="eyebrow reveal">05 · 06 · Delivery &amp; Pipeline</p>
+  <p class="eyebrow reveal"><span class="step">4</span> Active Initiatives <span class="src">Source · 05 Delivery · 06 Pipeline</span></p>
   <h2 class="sec-title reveal" id="progress-h">Initiative Progress</h2>
   <p class="sec-lede reveal">All twelve initiatives, plus the two completed milestones. Filter by status, then select any item to open its full status, business value and dependencies. “In delivery” means work has started and is progressing — it does not mean complete.</p>
 
-  <div class="filters reveal" role="group" aria-label="Filter initiatives by status">
+  <div class="filter-bar reveal" role="group" aria-label="Filter initiatives by status">
+    <span class="fl">Filter by status</span>
     <button class="filter" type="button" data-filter="all" aria-pressed="true">All <span class="cnt">14</span></button>
     <button class="filter" type="button" data-filter="completed" aria-pressed="false">Completed <span class="cnt">2</span></button>
     <button class="filter" type="button" data-filter="delivery" aria-pressed="false">In Delivery <span class="cnt">6</span></button>
     <button class="filter" type="button" data-filter="procurement" aria-pressed="false">In Procurement <span class="cnt">2</span></button>
     <button class="filter" type="button" data-filter="progress" aria-pressed="false">In Progress <span class="cnt">4</span></button>
+    <button class="filter" type="button" data-filter="planned" aria-pressed="false">Planned <span class="cnt">0</span></button>
     <button class="filter" type="button" data-filter="blocked" aria-pressed="false">Blocked <span class="cnt">0</span></button>
+    <button id="reset-filters" type="button" disabled><svg><use href="#i-refresh"></use></svg> Reset filters</button>
     <span id="filter-status" role="status" aria-live="polite">Showing all 14 items</span>
   </div>
 
@@ -261,7 +386,7 @@
         <div class="stage-track"><span class="st on g"></span><span class="st on g"></span><span class="st on g"></span><span class="st on g"></span></div>
         <div class="stage-label">Milestone complete</div>
       </div>
-      <span class="more">View details →</span>
+      <span class="more">View details <span class="chev">→</span></span>
       <div class="detail-src">
         <div class="blk"><b>Milestone</b><p>Recruitment for the Digital Forensics &amp; Incident Response / SOC Level 2 Specialist has been completed. The specialist will join Muhlah on 1 September 2026.</p></div>
         <div class="blk"><b>Regulatory basis</b><p>SAMA CSF 3.3.15-4.c · Cyber Security Incident Management: “sufficient capacity available of certified forensic staff for handling major incidents (e.g., internal staff or contracting an external forensic team)”.</p></div>
@@ -282,7 +407,7 @@
         <div class="stage-track"><span class="st on g"></span><span class="st on g"></span><span class="st on g"></span><span class="st on g"></span></div>
         <div class="stage-label">Development complete</div>
       </div>
-      <span class="more">View details →</span>
+      <span class="more">View details <span class="chev">→</span></span>
       <div class="detail-src">
         <div class="blk"><b>Milestone</b><p>13 → 57 cybersecurity documents. 44 new documents developed, approximately 338% growth from the original baseline of 13 recorded when the cybersecurity programme started.</p></div>
         <div class="blk value"><b>Business value</b><p>Policies, standards and procedures now exist across the cybersecurity domains rather than in isolated pockets, and the expanded library is what allows control coverage to be evidenced against the SAMA Cybersecurity Framework.</p></div>
@@ -303,7 +428,7 @@
         <div class="stage-track"><span class="st on"></span><span class="st on"></span><span class="st on"></span><span class="st"></span></div>
         <div class="stage-label">Stage 1 · Active delivery</div>
       </div>
-      <span class="more">View details →</span>
+      <span class="more">View details <span class="chev">→</span></span>
       <div class="detail-src">
         <div class="blk"><b>Status</b><p>Pilot configuration completed; phased deployment being prepared. Netskope and ServiceDesk Plus are both in implementation now.</p></div>
         <div class="blk value"><b>Business value</b><p>Safer internet and cloud use; helps prevent unauthorised data loss.</p></div>
@@ -324,7 +449,7 @@
         <div class="stage-track"><span class="st on"></span><span class="st on"></span><span class="st on"></span><span class="st"></span></div>
         <div class="stage-label">Stage 1 · Active delivery</div>
       </div>
-      <span class="more">View details →</span>
+      <span class="more">View details <span class="chev">→</span></span>
       <div class="detail-src">
         <div class="blk"><b>Status</b><p>In implementation, alongside Netskope.</p></div>
         <div class="blk value"><b>Business value</b><p>Formal handling of incidents, requests and changes; the basis of a reliable asset register.</p></div>
@@ -345,7 +470,7 @@
         <div class="stage-track"><span class="st on"></span><span class="st on"></span><span class="st"></span><span class="st"></span></div>
         <div class="stage-label">Stage 1 · Active delivery</div>
       </div>
-      <span class="more">View details →</span>
+      <span class="more">View details <span class="chev">→</span></span>
       <div class="detail-src">
         <div class="blk"><b>Status</b><p>New-joiner workflow prepared; mover and leaver workflows in progress. The joiner side of the access workflow is prepared.</p></div>
         <div class="blk value"><b>Business value</b><p>Access approved, changed and removed with an evidence trail.</p></div>
@@ -365,7 +490,7 @@
         <div class="stage-track"><span class="st on"></span><span class="st on"></span><span class="st on"></span><span class="st"></span></div>
         <div class="stage-label">Stage 1 · Active delivery</div>
       </div>
-      <span class="more">View details →</span>
+      <span class="more">View details <span class="chev">→</span></span>
       <div class="detail-src">
         <div class="blk"><b>Status</b><p>Engagement underway; 55 documents developed, 53 pending approval. DiPu produced the documentation set under the Cybersecurity Lead's oversight.</p></div>
         <div class="blk value"><b>Business value</b><p>Accelerates gap remediation and audit readiness under Muhlah's oversight.</p></div>
@@ -386,7 +511,7 @@
         <div class="stage-track"><span class="st on"></span><span class="st on"></span><span class="st on"></span><span class="st"></span></div>
         <div class="stage-label">Stage 1 · Active delivery</div>
       </div>
-      <span class="more">View details →</span>
+      <span class="more">View details <span class="chev">→</span></span>
       <div class="detail-src">
         <div class="blk"><b>Status</b><p>BitRaser wiping hardware in place; DiPu destruction service on demand. Secure disposal is genuinely covered — BitRaser hardware plus DiPu as a destruction service on call.</p></div>
         <div class="blk value"><b>Business value</b><p>Information permanently removed from retired assets, with evidence.</p></div>
@@ -406,7 +531,7 @@
         <div class="stage-track"><span class="st on"></span><span class="st on"></span><span class="st on g"></span><span class="st"></span></div>
         <div class="stage-label">Stage 1 · Recruitment milestone complete</div>
       </div>
-      <span class="more">View details →</span>
+      <span class="more">View details <span class="chev">→</span></span>
       <div class="detail-src">
         <div class="blk"><b>Status</b><p>DFIR / SOC L2 Specialist recruitment has been completed. The specialist will join Muhlah on 1 September 2026.</p></div>
         <div class="blk value"><b>Business value</b><p>Ability to investigate serious incidents and preserve evidence in-house.</p></div>
@@ -428,7 +553,7 @@
         <div class="stage-track"><span class="st on o"></span><span class="st on o"></span><span class="st"></span><span class="st"></span></div>
         <div class="stage-label">Stage 2 · Vendor selection</div>
       </div>
-      <span class="more">View details →</span>
+      <span class="more">View details <span class="chev">→</span></span>
       <div class="detail-src">
         <div class="blk"><b>Purpose</b><p>Centralise SAMA controls, risks, evidence, findings and management reporting.</p></div>
         <div class="blk"><b>Status</b><p>In procurement — funding is approved; vendor selection and contracting are the current step.</p></div>
@@ -449,7 +574,7 @@
         <div class="stage-track"><span class="st on o"></span><span class="st on o"></span><span class="st"></span><span class="st"></span></div>
         <div class="stage-label">Stage 2 · Vendor selection</div>
       </div>
-      <span class="more">View details →</span>
+      <span class="more">View details <span class="chev">→</span></span>
       <div class="detail-src">
         <div class="blk"><b>Purpose</b><p>Identify weaknesses and validate that detection and response actually work.</p></div>
         <div class="blk"><b>Status</b><p>In procurement — funding is approved; vendor selection and contracting are the current step.</p></div>
@@ -471,7 +596,7 @@
         <div class="stage-track"><span class="st on"></span><span class="st"></span><span class="st"></span><span class="st"></span></div>
         <div class="stage-label">Stage 3 · Sequenced</div>
       </div>
-      <span class="more">View details →</span>
+      <span class="more">View details <span class="chev">→</span></span>
       <div class="detail-src">
         <div class="blk"><b>Purpose</b><p>Separate systems and users so an incident cannot spread company-wide.</p></div>
         <div class="blk"><b>Status</b><p>In progress. Funding is approved.</p></div>
@@ -491,7 +616,7 @@
         <div class="stage-track"><span class="st on"></span><span class="st"></span><span class="st"></span><span class="st"></span></div>
         <div class="stage-label">Stage 3 · Sequenced</div>
       </div>
-      <span class="more">View details →</span>
+      <span class="more">View details <span class="chev">→</span></span>
       <div class="detail-src">
         <div class="blk"><b>Purpose</b><p>Visibility of suspicious activity on the network.</p></div>
         <div class="blk"><b>Status</b><p>In progress. Funding is approved.</p></div>
@@ -512,7 +637,7 @@
         <div class="stage-track"><span class="st on"></span><span class="st"></span><span class="st"></span><span class="st"></span></div>
         <div class="stage-label">Stage 3 · Sequenced</div>
       </div>
-      <span class="more">View details →</span>
+      <span class="more">View details <span class="chev">→</span></span>
       <div class="detail-src">
         <div class="blk"><b>Purpose</b><p>Confirm and strengthen protection against attacks that take services offline.</p></div>
         <div class="blk"><b>Status</b><p>In progress. Funding is approved.</p></div>
@@ -532,7 +657,7 @@
         <div class="stage-track"><span class="st on"></span><span class="st"></span><span class="st"></span><span class="st"></span></div>
         <div class="stage-label">Stage 3 · Sequenced</div>
       </div>
-      <span class="more">View details →</span>
+      <span class="more">View details <span class="chev">→</span></span>
       <div class="detail-src">
         <div class="blk"><b>Purpose</b><p>Identify critical services, acceptable downtime and recovery priorities.</p></div>
         <div class="blk"><b>Status</b><p>In progress. Funding is approved.</p></div>
@@ -542,7 +667,11 @@
 
   </div>
 
-  <div class="empty" id="empty-state">No initiatives are currently reported as blocked. Nothing in this programme is held up by an unresolved obstacle — the reported constraints are procurement speed and internal capacity, covered under Next Steps.</div>
+  <div class="empty" id="empty-state">
+    <span data-empty="blocked">No initiatives are reported as blocked. Nothing in this programme is held up by an unresolved obstacle — the reported constraints are procurement speed and internal capacity, covered under Next Steps.</span>
+    <span data-empty="planned" hidden>No initiative sits in the “Planned” state. The source report defines “Planned” as defined but not yet started; all twelve initiatives have moved beyond that into delivery, procurement or progress.</span>
+    <span data-empty="generic" hidden>No items match the selected status.</span>
+  </div>
 
   <p class="note">“In delivery” means work has started and is progressing — it does not mean complete. Each item still has remaining scope. Funding is approved for all of these. “In procurement” means vendor selection and contracting are under way · “Planned” means defined but not yet started.</p>
 </section>
@@ -551,9 +680,17 @@
      4 · ROADMAP
      ==================================================================== -->
 <section class="section" id="roadmap" aria-labelledby="roadmap-h">
-  <p class="eyebrow reveal">11 · Sequence</p>
+  <p class="eyebrow reveal"><span class="step">5</span> Sequence &amp; Milestones <span class="src">Source · 11 Sequence</span></p>
   <h2 class="sec-title reveal" id="roadmap-h">Delivery Roadmap</h2>
   <p class="sec-lede reveal">Sequence reflects dependencies and funding — dates are not assigned. Only the milestones below carry confirmed dates.</p>
+
+  <div class="tl-legend reveal" aria-label="Roadmap status key">
+    <span><i class="done"></i> Completed</span>
+    <span><i class="now"></i> Current activity</span>
+    <span><i class="proc"></i> In procurement</span>
+    <span><i class="seq"></i> Upcoming · sequenced</span>
+    <span><i class="dep"></i> Dependent on another item</span>
+  </div>
 
   <div class="timeline reveal">
 
@@ -563,14 +700,20 @@
         <h3>Programme start</h3>
         <span class="badge b-green done">Completed</span>
       </div>
-      <div class="tl-body">
+      <button class="tl-body" type="button" data-modal data-title="Programme start" data-period="June 2026 · Completed">
         <p>Baseline recorded at the start of the cybersecurity programme.</p>
         <ul class="tl-list">
           <li>13 cybersecurity documents in existence at baseline</li>
           <li>Twelve initiatives defined</li>
         </ul>
-      </div>
-    </article>
+      
+        <div class="tl-more">View milestone details <span class="chev">→</span></div>
+        <div class="detail-src"><div class="blk"><b>Reporting period</b><p>June 2026 — the start of the cybersecurity programme.</p></div>
+<div class="blk"><b>Baseline recorded</b><p>Muhlah held 13 cybersecurity documents at programme start, with no formal governance set in place.</p></div>
+<div class="blk"><b>Scope defined</b><p>Twelve initiatives were defined at this point. Six have since moved into delivery.</p></div>
+<div class="blk value"><b>Why it matters</b><p>This baseline is the reference point for the 13 → 57 documentation growth reported as a completed milestone.</p></div></div>
+      </button>
+      </article>
 
     <article class="tl-item done">
       <div class="tl-head">
@@ -578,14 +721,20 @@
         <h3>Documentation build-out · 13 → 57</h3>
         <span class="badge b-green done">Completed</span>
       </div>
-      <div class="tl-body">
+      <button class="tl-body" type="button" data-modal data-title="Documentation build-out" data-period="Completed">
         <p>44 new cybersecurity documents developed — approximately 338% growth from the original baseline.</p>
         <ul class="tl-list">
           <li>55 governance documents developed, covering 54 SAMA CSF subdomains</li>
           <li>53 documents pending approval — approval and publication continue under Stage 1</li>
         </ul>
-      </div>
-    </article>
+      
+        <div class="tl-more">View milestone details <span class="chev">→</span></div>
+        <div class="detail-src"><div class="blk"><b>Milestone</b><p>Documentation grew from 13 documents at programme start to 57 today — 44 new documents, approximately 338% growth from the original baseline.</p></div>
+<div class="blk"><b>Coverage</b><p>55 governance documents developed, covering 54 SAMA CSF subdomains. Produced by DiPu under the Cybersecurity Lead's oversight.</p></div>
+<div class="blk"><b>Remaining scope</b><p>53 of the 55 developed documents are pending approval. Document approval and publication continues under Stage 1 · Now.</p></div>
+<div class="blk value"><b>Why it matters</b><p>Policies, standards and procedures now exist across the cybersecurity domains rather than in isolated pockets. The expanded library is what allows control coverage to be evidenced against the SAMA Cybersecurity Framework.</p></div></div>
+      </button>
+      </article>
 
     <article class="tl-item done">
       <div class="tl-head">
@@ -593,14 +742,20 @@
         <h3>FY2026 cybersecurity budget approved</h3>
         <span class="badge b-green done">Completed</span>
       </div>
-      <div class="tl-body">
+      <button class="tl-body" type="button" data-modal data-title="FY2026 budget approved" data-period="Completed">
         <p>SAR 665,000 approved. Execution is now the constraint, not funding.</p>
         <ul class="tl-list">
           <li>Procurement and implementation now in progress</li>
           <li>Spend to be reported against each category quarterly</li>
         </ul>
-      </div>
-    </article>
+      
+        <div class="tl-more">View milestone details <span class="chev">→</span></div>
+        <div class="detail-src"><div class="blk"><b>Milestone</b><p>SAR 665,000 approved for FY2026, across the components listed in the budget sheet.</p></div>
+<div class="blk"><b>Largest categories</b><ul><li>Testing &amp; assurance — SAR 210,000</li><li>Governance tooling — SAR 130,000</li><li>Data protection — SAR 100,000</li><li>Network security — SAR 70,000</li></ul></div>
+<div class="blk"><b>Current state</b><p>Procurement and implementation now in progress. Execution is the constraint, not funding. Figures represent the approved envelope, not committed spend.</p></div>
+<div class="blk value"><b>Reporting commitment</b><p>Actual spend will be reported against each category quarterly.</p></div></div>
+      </button>
+      </article>
 
     <article class="tl-item done">
       <div class="tl-head">
@@ -608,14 +763,20 @@
         <h3>DFIR / SOC L2 Specialist recruitment</h3>
         <span class="badge b-green done">Completed</span>
       </div>
-      <div class="tl-body">
+      <button class="tl-body" type="button" data-modal data-title="DFIR / SOC L2 recruitment completed" data-period="Completed">
         <p>DFIR / SOC L2 Specialist recruitment has been completed. The specialist will join Muhlah on 1 September 2026.</p>
         <ul class="tl-list">
           <li>Addresses SAMA CSF 3.3.15-4.c · Cyber Security Incident Management</li>
           <li>Cybersecurity Architect recruitment remains in progress</li>
         </ul>
-      </div>
-    </article>
+      
+        <div class="tl-more">View milestone details <span class="chev">→</span></div>
+        <div class="detail-src"><div class="blk"><b>Milestone</b><p>DFIR / SOC L2 Specialist recruitment has been completed. The specialist will join Muhlah on 1 September 2026.</p></div>
+<div class="blk"><b>Regulatory basis</b><p>SAMA CSF 3.3.15-4.c · Cyber Security Incident Management: “sufficient capacity available of certified forensic staff for handling major incidents (e.g., internal staff or contracting an external forensic team)”.</p></div>
+<div class="blk value"><b>Why it matters</b><p>Without certified forensic capacity, Muhlah cannot properly investigate a major incident, preserve evidence, or demonstrate to the regulator what happened.</p></div>
+<div class="blk"><b>Still open</b><p>Cybersecurity Architect recruitment remains in progress — candidates are being interviewed.</p></div></div>
+      </button>
+      </article>
 
     <article class="tl-item done">
       <div class="tl-head">
@@ -623,10 +784,16 @@
         <h3>This report</h3>
         <span class="badge b-cyan">Reporting date</span>
       </div>
-      <div class="tl-body">
+      <button class="tl-body" type="button" data-modal data-title="This report" data-period="24 August 2026">
         <p>Executive progress report to the Board and Executive Committee. Confidential.</p>
-      </div>
-    </article>
+      
+        <div class="tl-more">View milestone details <span class="chev">→</span></div>
+        <div class="detail-src"><div class="blk"><b>Reporting date</b><p>24 August 2026.</p></div>
+<div class="blk"><b>Audience and classification</b><p>Executive progress report to the Board and Executive Committee. Confidential · Board &amp; ExCo.</p></div>
+<div class="blk"><b>Prepared by</b><p>Nusaybah Alharbi · Cybersecurity Lead.</p></div>
+<div class="blk"><b>Headline position</b><p>Six of twelve initiatives have moved into delivery. The FY2026 budget is approved and procurement is under way · no initiative is presented as complete.</p></div></div>
+      </button>
+      </article>
 
     <article class="tl-item done">
       <div class="tl-head">
@@ -634,18 +801,23 @@
         <h3>DFIR / SOC L2 Specialist joins Muhlah</h3>
         <span class="badge b-green done">Confirmed start date</span>
       </div>
-      <div class="tl-body">
+      <button class="tl-body" type="button" data-modal data-title="DFIR / SOC L2 Specialist joins Muhlah" data-period="1 September 2026">
         <p>The specialist will join Muhlah on 1 September 2026, bringing forensic and SOC Level 2 capacity in-house.</p>
-      </div>
-    </article>
+      
+        <div class="tl-more">View milestone details <span class="chev">→</span></div>
+        <div class="detail-src"><div class="blk"><b>Confirmed date</b><p>1 September 2026 — the specialist will join Muhlah.</p></div>
+<div class="blk value"><b>Capability delivered</b><p>Forensic and SOC Level 2 capacity brought in-house: the ability to investigate serious incidents and preserve evidence.</p></div>
+<div class="blk"><b>Note</b><p>Recruitment is complete. The Digital Forensics Capability initiative itself remains in delivery until the specialist has joined and forensic capacity is operational.</p></div></div>
+      </button>
+      </article>
 
-    <article class="tl-item">
+    <article class="tl-item now">
       <div class="tl-head">
         <span class="tl-date">Stage 1 · Now</span>
         <h3>Active Delivery</h3>
         <span class="badge b-cyan">In delivery</span>
       </div>
-      <div class="tl-body">
+      <button class="tl-body" type="button" data-modal data-title="Active Delivery" data-period="Stage 1 · Now">
         <p>Work has started and is progressing.</p>
         <ul class="tl-list">
           <li>Netskope deployment</li>
@@ -654,8 +826,13 @@
           <li>Document approval and publication</li>
           <li>DFIR and architect recruitment</li>
         </ul>
-      </div>
-    </article>
+      
+        <div class="tl-more">View milestone details <span class="chev">→</span></div>
+        <div class="detail-src"><div class="blk"><b>Stage</b><p>Stage 1 · Now — work has started and is progressing.</p></div>
+<div class="blk"><b>Items in this stage</b><ul><li>Netskope deployment</li><li>ServiceDesk Plus implementation</li><li>Joiner–Mover–Leaver workflow</li><li>Document approval and publication</li><li>DFIR and architect recruitment</li></ul></div>
+<div class="blk"><b>Important qualification</b><p>“In delivery” means work has started and is progressing — it does not mean complete. Each item still has remaining scope.</p></div></div>
+      </button>
+      </article>
 
     <article class="tl-item proc">
       <div class="tl-head">
@@ -663,7 +840,7 @@
         <h3>Vendor Selection</h3>
         <span class="badge b-gold">In procurement</span>
       </div>
-      <div class="tl-body">
+      <button class="tl-body" type="button" data-modal data-title="Vendor Selection" data-period="Stage 2 · In procurement">
         <p>Funded and in procurement — vendor selection and contracting are the current step.</p>
         <ul class="tl-list">
           <li>Vulnerability assessment and penetration testing</li>
@@ -672,16 +849,21 @@
           <li>DLP, classification and whitelisting</li>
           <li>Awareness platform</li>
         </ul>
-      </div>
-    </article>
+      
+        <div class="tl-more">View milestone details <span class="chev">→</span></div>
+        <div class="detail-src"><div class="blk"><b>Stage</b><p>Stage 2 · In procurement — funding is approved; vendor selection and contracting are the current step.</p></div>
+<div class="blk"><b>Items in this stage</b><ul><li>Vulnerability assessment and penetration testing</li><li>GRC platform</li><li>Asset discovery tool</li><li>DLP, classification and whitelisting</li><li>Awareness platform</li></ul></div>
+<div class="blk value"><b>Management support needed</b><p>Delivery depends on vendor selection, contracting speed and internal capacity — not on further financial decisions.</p></div></div>
+      </button>
+      </article>
 
-    <article class="tl-item seq">
+    <article class="tl-item dep">
       <div class="tl-head">
         <span class="tl-date">Stage 3 · Sequenced</span>
         <h3>Follows Dependencies</h3>
         <span class="badge b-steel">Sequenced</span>
       </div>
-      <div class="tl-body">
+      <button class="tl-body" type="button" data-modal data-title="Follows Dependencies" data-period="Stage 3 · Sequenced">
         <p>Defined and funded; sequence is governed by dependencies rather than dates.</p>
         <ul class="tl-list">
           <li>Network segmentation and switches</li>
@@ -691,8 +873,13 @@
           <li>BIA and business continuity</li>
           <li>SAMA ML3 external assessment</li>
         </ul>
-      </div>
-    </article>
+      
+        <div class="tl-more">View milestone details <span class="chev">→</span></div>
+        <div class="detail-src"><div class="blk"><b>Stage</b><p>Stage 3 · Sequenced — defined and funded; sequence is governed by dependencies rather than assigned dates.</p></div>
+<div class="blk"><b>Items in this stage</b><ul><li>Network segmentation and switches</li><li>Network Detection and Response</li><li>Red teaming / detection validation</li><li>DDoS protection validation</li><li>BIA and business continuity</li><li>SAMA ML3 external assessment</li></ul></div>
+<div class="blk"><b>Dependencies</b><ul><li>Network Detection and Response follows network segmentation</li><li>Red teaming follows the first assessment round</li></ul></div></div>
+      </button>
+      </article>
 
   </div>
 
@@ -703,7 +890,7 @@
      5 · SOLUTIONS & INVESTMENT
      ==================================================================== -->
 <section class="section" id="solutions" aria-labelledby="solutions-h">
-  <p class="eyebrow reveal">07 · 08 · Investment</p>
+  <p class="eyebrow reveal"><span class="step">6</span> Solutions &amp; Investment <span class="src">Source · 07 · 08 Investment</span></p>
   <h2 class="sec-title reveal" id="solutions-h">Solutions, Capabilities &amp; Investment</h2>
   <p class="sec-lede reveal">The cybersecurity solutions being implemented and procured, and the approved FY2026 budget behind them. Amounts are taken directly from the FY2026 cybersecurity budget sheet.</p>
 
@@ -899,19 +1086,19 @@
      6 · GOVERNANCE & DOCUMENTATION
      ==================================================================== -->
 <section class="section" id="documentation" aria-labelledby="documentation-h">
-  <p class="eyebrow reveal">10 · Milestone</p>
+  <p class="eyebrow reveal"><span class="step">7</span> Achievements · Governance <span class="src">Source · 10 Milestone</span></p>
   <h2 class="sec-title reveal" id="documentation-h">Governance &amp; Documentation Progress</h2>
   <p class="sec-lede reveal"><span class="badge b-green done">Completed milestone</span> &nbsp;When the cybersecurity programme started, Muhlah had only 13 cybersecurity documents. That has now increased to 57.</p>
 
   <div class="panel reveal" style="padding:34px 26px;">
     <div class="doc-compare">
       <div class="doc-node from">
-        <div class="v" data-count="13">0</div>
+        <div class="v" data-count="13">13</div>
         <div class="c">At programme start</div>
       </div>
       <div class="doc-arrow" aria-hidden="true"><span class="ln"></span><span class="hd"></span></div>
       <div class="doc-node to">
-        <div class="v" data-count="57">0</div>
+        <div class="v" data-count="57">57</div>
         <div class="c">Today</div>
       </div>
     </div>
@@ -925,34 +1112,44 @@
   <div class="grid g3 reveal" id="mandatory-kpis" style="margin-top:18px;">
     <article class="kpi">
       <div class="ico"><svg><use href="#i-doc"></use></svg></div>
-      <div class="v green" data-count="57">0</div>
+      <p class="cap">Documents today</p>
+      <div class="v green" data-count="57">57</div>
       <p class="l">Cybersecurity Documents</p>
+      <p class="foot">Up from 13 at programme start</p>
     </article>
     <article class="kpi">
       <div class="ico"><svg><use href="#i-arrow"></use></svg></div>
+      <p class="cap">Trajectory</p>
       <div class="v"><span class="from">13</span> <span class="sep">→</span> <span class="to">57</span></div>
       <p class="l">Increased from 13 to 57</p>
+      <p class="foot">Baseline recorded June 2026</p>
     </article>
     <article class="kpi">
       <div class="ico"><svg><use href="#i-doc"></use></svg></div>
-      <div class="v green" data-count="44" data-prefix="+">0</div>
+      <p class="cap">Added</p>
+      <div class="v green" data-count="44" data-prefix="+">+44</div>
       <p class="l">New Documents</p>
+      <p class="foot">Developed since the programme began</p>
     </article>
     <article class="kpi">
       <div class="ico"><svg><use href="#i-target"></use></svg></div>
-      <div class="v green" data-count="338" data-prefix="≈" data-suffix="%">0</div>
+      <p class="cap">Growth</p>
+      <div class="v green" data-count="338" data-prefix="≈" data-suffix="%">≈338%</div>
       <p class="l">Approximately 338% Growth</p>
+      <p class="foot">From the original 13-document baseline</p>
     </article>
     <article class="kpi">
       <div class="ico"><svg><use href="#i-users"></use></svg></div>
+      <p class="cap">Recruitment</p>
       <div class="v green kpi-word">Completed</div>
       <p class="l">DFIR / SOC L2 Recruitment</p>
       <div class="sub"><span class="badge b-green done">Recruitment completed</span></div>
     </article>
     <article class="kpi">
       <div class="ico"><svg><use href="#i-flag"></use></svg></div>
+      <p class="cap">Start date</p>
       <div class="v kpi-word">1 September 2026</div>
-      <p class="l">Joining Date</p>
+      <p class="l">Joining Muhlah on 1 September 2026</p>
       <div class="sub"><span class="badge b-green done">Confirmed start date</span></div>
     </article>
   </div>
@@ -960,12 +1157,12 @@
   <div class="grid g2 reveal" style="margin-top:18px;">
     <article class="kpi">
       <div class="ico"><svg><use href="#i-shield"></use></svg></div>
-      <div class="v cyan" data-count="54">0</div>
+      <div class="v cyan" data-count="54">54</div>
       <p class="l">SAMA CSF subdomains covered</p>
     </article>
     <article class="kpi">
       <div class="ico"><svg><use href="#i-check"></use></svg></div>
-      <div class="v" data-count="53">0</div>
+      <div class="v" data-count="53">53</div>
       <p class="l">Documents pending approval, of 55 developed</p>
     </article>
   </div>
@@ -1027,7 +1224,7 @@
      7 · TEAM & RECRUITMENT
      ==================================================================== -->
 <section class="section" id="team" aria-labelledby="team-h">
-  <p class="eyebrow reveal">09 · Resourcing</p>
+  <p class="eyebrow reveal"><span class="step">8</span> Team Development <span class="src">Source · 09 Resourcing</span></p>
   <h2 class="sec-title reveal" id="team-h">Two Roles Required by the SAMA Framework</h2>
   <p class="sec-lede reveal">Both roles address named requirements in the SAMA Cybersecurity Framework. These are not discretionary hires — the framework names both.</p>
 
@@ -1068,18 +1265,18 @@
   <div class="grid g3 reveal" style="margin-top:18px;">
     <article class="kpi">
       <div class="ico"><svg><use href="#i-users"></use></svg></div>
-      <div class="v" data-count="2">0</div>
+      <div class="v" data-count="2">2</div>
       <p class="l">Specialist roles required by the SAMA framework</p>
     </article>
     <article class="kpi">
       <div class="ico"><svg><use href="#i-check"></use></svg></div>
-      <div class="v green" data-count="1">0</div>
+      <div class="v green" data-count="1">1</div>
       <p class="l">Recruitment completed · DFIR / SOC L2 Specialist</p>
       <div class="sub"><span class="badge b-green done">Joining 1 September 2026</span></div>
     </article>
     <article class="kpi">
       <div class="ico"><svg><use href="#i-search"></use></svg></div>
-      <div class="v" data-count="1">0</div>
+      <div class="v" data-count="1">1</div>
       <p class="l">Recruitment continuing · Cybersecurity Architect</p>
       <div class="sub"><span class="badge b-gold">Candidates being interviewed</span></div>
     </article>
@@ -1092,7 +1289,7 @@
      8 · NEXT STEPS
      ==================================================================== -->
 <section class="section" id="next" aria-labelledby="next-h">
-  <p class="eyebrow reveal">Executive decisions</p>
+  <p class="eyebrow reveal"><span class="step">9</span> Risks, Priorities &amp; Decisions Required <span class="src">Source · Executive decisions</span></p>
   <h2 class="sec-title reveal" id="next-h">Achievements, Risks &amp; Next Steps</h2>
   <p class="sec-lede reveal">The funding decision is made. From here the constraint is procurement speed and internal capacity — and that is where support from the Executive Committee is needed.</p>
 

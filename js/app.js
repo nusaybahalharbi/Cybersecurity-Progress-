@@ -137,19 +137,22 @@
      ====================================================================== */
   function animateCount(el) {
     if (el.dataset.done === '1') return;
-    el.dataset.done = '1';
+    el.dataset.done = '1';                       // runs once, ever
     var target = parseFloat(el.dataset.count);
     var prefix = el.dataset.prefix || '';
     var suffix = el.dataset.suffix || '';
-    if (prefersReduced()) { el.textContent = prefix + target + suffix; return; }
-    var dur = 1200, t0 = null;
+    var final = prefix + target.toLocaleString('en-US') + suffix;
+    // The final figure is already in the markup, so if motion is reduced (or JS
+    // is disabled entirely) the number stays visible and correct.
+    if (prefersReduced()) { el.textContent = final; return; }
+    var dur = 1100, t0 = null;
     function step(t) {
       if (t0 === null) t0 = t;
       var k = Math.min(1, (t - t0) / dur);
       var eased = 1 - Math.pow(1 - k, 3);
       el.textContent = prefix + Math.round(target * eased).toLocaleString('en-US') + suffix;
       if (k < 1) requestAnimationFrame(step);
-      else el.textContent = prefix + target.toLocaleString('en-US') + suffix;
+      else el.textContent = final;
     }
     requestAnimationFrame(step);
   }
@@ -196,7 +199,11 @@
   var emptyState = $('#empty-state');
   var filterStatus = $('#filter-status');
 
+  var resetBtn = $('#reset-filters');
+  var activeFilter = 'all';
+
   function applyFilter(key) {
+    activeFilter = key;
     var shown = 0;
     cards.forEach(function (c) {
       var match = key === 'all' || c.dataset.status === key;
@@ -207,16 +214,39 @@
       b.setAttribute('aria-pressed', b.dataset.filter === key ? 'true' : 'false');
     });
     emptyState.classList.toggle('show', shown === 0);
+
+    // Show the empty-state copy that actually explains this filter
+    $$('#empty-state [data-empty]').forEach(function (sp) {
+      sp.hidden = sp.dataset.empty !== (['blocked', 'planned'].indexOf(key) > -1 ? key : 'generic');
+    });
+
     var label = filterBtns.filter(function (b) { return b.dataset.filter === key; })[0];
     var name = label ? label.childNodes[0].textContent.trim() : 'All';
     filterStatus.textContent = shown === 0
-      ? 'No items match “' + name + '”'
-      : 'Showing ' + shown + (key === 'all' ? ' items' : ' · ' + name);
+      ? 'No items match \u201c' + name + '\u201d'
+      : 'Showing ' + shown + (key === 'all' ? ' items' : ' of 14 \u00b7 ' + name);
+
+    resetBtn.disabled = key === 'all';
+    // Clearing the filter also clears any card selection highlight
+    if (key === 'all') cards.forEach(function (c) { c.classList.remove('selected'); });
   }
+
+  // Dim filters that legitimately have no items, so the count reads as information
+  filterBtns.forEach(function (b) {
+    var c = b.querySelector('.cnt');
+    if (c && c.textContent.trim() === '0') b.classList.add('zero');
+  });
+
+  resetBtn.addEventListener('click', function () {
+    applyFilter('all');
+    filterStatus.textContent = 'Filters reset \u00b7 showing all 14 items';
+    toast('Filters reset');
+  });
 
   filterBtns.forEach(function (b) {
     b.addEventListener('click', function () { applyFilter(b.dataset.filter); });
   });
+
   applyFilter('all');
 
   /* ======================================================================
@@ -228,21 +258,39 @@
   var modalBody = $('#modal-body');
   var lastFocus = null;
 
-  function openModal(card) {
-    lastFocus = card;
-    modalTitle.textContent = card.dataset.title.replace(/&amp;/g, '&');
+  var modalFoot = document.createElement('div');
+  modalFoot.id = 'modal-foot';
+  modalBody.parentNode.appendChild(modalFoot);
+
+  function openModal(el) {
+    lastFocus = el;
+    var title = el.dataset.title || '';
+    modalTitle.textContent = title.replace(/&amp;/g, '&');
+
     modalBadges.innerHTML = '';
-    var badge = card.querySelector('.badge');
+    var badge = el.querySelector('.badge') || (el.closest('article') && el.closest('article').querySelector('.badge'));
     if (badge) modalBadges.appendChild(badge.cloneNode(true));
-    var stage = card.querySelector('.stage-label');
+    var stage = el.querySelector('.stage-label');
     if (stage) {
-      var s = document.createElement('span');
-      s.className = 'badge b-steel';
-      s.textContent = stage.textContent;
-      modalBadges.appendChild(s);
+      var s1 = document.createElement('span');
+      s1.className = 'badge b-steel';
+      s1.textContent = stage.textContent;
+      modalBadges.appendChild(s1);
     }
-    var src = card.querySelector('.detail-src');
+    if (el.dataset.period) {
+      var s2 = document.createElement('span');
+      s2.className = 'badge b-cyan';
+      s2.textContent = el.dataset.period;
+      modalBadges.appendChild(s2);
+    }
+
+    var src = el.querySelector('.detail-src');
     modalBody.innerHTML = src ? src.innerHTML : '';
+    modalFoot.textContent = 'Source \u00b7 Muhlah Cybersecurity Executive Progress Report \u00b7 24 August 2026';
+
+    // Mark which card is open
+    cards.forEach(function (c) { c.classList.toggle('selected', c === el); });
+
     modal.hidden = false;
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -253,12 +301,27 @@
     modal.classList.remove('open');
     modal.hidden = true;
     if (!document.body.classList.contains('present')) document.body.style.overflow = '';
-    if (lastFocus) lastFocus.focus();
+    if (lastFocus) { try { lastFocus.focus(); } catch (e) {} }
   }
+
+  // Trap focus inside the dialog while it is open
+  modal.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+    var f = $$('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])', modal)
+      .filter(function (n) { return n.offsetParent !== null; });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   cards.forEach(function (c) {
     c.addEventListener('click', function () { openModal(c); });
   });
+  $$('[data-modal]').forEach(function (el) {
+    el.addEventListener('click', function () { openModal(el); });
+  });
+
   $('#modal-close').addEventListener('click', closeModal);
   modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
 
@@ -335,12 +398,36 @@
   var pPrev = $('#p-prev');
   var pNext = $('#p-next');
 
+  var pName = null, pOf = null, pFill = null;
+  function buildPresentMeta() {
+    if (pName) return;
+    var wrap = document.createElement('div');
+    wrap.id = 'present-meta';
+    wrap.innerHTML = '<div class="row"><span class="name"></span><span class="of"></span></div>'
+                   + '<div class="track"><span class="fill"></span></div>';
+    document.body.appendChild(wrap);
+    pName = wrap.querySelector('.name');
+    pOf = wrap.querySelector('.of');
+    pFill = wrap.querySelector('.fill');
+  }
+
+  function sectionName(sec) {
+    var lb = sec.getAttribute('aria-labelledby');
+    var h = lb && document.getElementById(lb);
+    return h ? h.textContent.trim() : sec.id;
+  }
+
   function showSlide(i) {
     slideIndex = Math.max(0, Math.min(sections.length - 1, i));
     sections.forEach(function (s, k) {
       s.classList.toggle('present-active', k === slideIndex);
       if (k === slideIndex) { s.scrollTop = 0; activate(s); }
     });
+    buildPresentMeta();
+    var navLink = navLinks.filter(function (a) { return a.dataset.nav === sectionIds[slideIndex]; })[0];
+    pName.textContent = navLink ? navLink.textContent.trim() : sectionName(sections[slideIndex]);
+    pOf.textContent = 'Section ' + (slideIndex + 1) + ' of ' + sections.length;
+    pFill.style.width = ((slideIndex + 1) / sections.length * 100) + '%';
     presentCount.innerHTML = '<b>' + (slideIndex + 1) + '</b> / ' + sections.length;
     pPrev.disabled = slideIndex === 0;
     pNext.disabled = slideIndex === sections.length - 1;
