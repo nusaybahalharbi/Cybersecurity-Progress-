@@ -1,155 +1,199 @@
 # Muhlah · Cybersecurity Transformation — Executive Progress Report
 
-A self-contained, responsive web presentation (10 slides, 16:9) built from the
-Muhlah cybersecurity board update. No frameworks, no CDNs, no build step — plain
-HTML, CSS and JavaScript with all assets stored locally.
+An interactive executive website for Muhlah Zamaniyah Financing Company's cybersecurity
+programme. Plain HTML, CSS and JavaScript — no frameworks, no build step, no CDN or
+other external dependency.
 
-**Confidential · Board & ExCo**
+**Confidential · Board & ExCo** · Reporting date 24 August 2026 · Nusaybah Alharbi, Cybersecurity Lead
+
+Live site: <https://nusaybahalharbi.github.io/Cybersecurity-Progress-/>
 
 ---
 
-## Contents
+## What's in it
+
+Eight sections, each reachable from the fixed header:
+
+| Section | Contents |
+|---|---|
+| **Home** | Branding, report title, reporting date, confidentiality classification, executive summary, **View Progress** button |
+| **Executive Summary** | Animated KPI cards, delivery ring, status distribution, the two completed milestones |
+| **Progress** | All 12 initiatives plus 2 completed milestones — filterable by status, each opening a detail modal |
+| **Roadmap** | Visual timeline: completed milestones with confirmed dates, then Stages 1–3 |
+| **Solutions** | Interactive solution cards with status, purpose, value and stage; budget by category and by component |
+| **Documentation** | The 13 → 57 documentation milestone with animated counters, governance achievements and outstanding assurance |
+| **Team** | The two SAMA-required roles; DFIR / SOC L2 Specialist marked **Recruitment completed**, joining 1 September 2026 |
+| **Next Steps** | Achievements, risks, dependencies, next steps, and the decisions required from the Executive Committee |
+
+### Interaction
+
+| Feature | How |
+|---|---|
+| Navigate | Header buttons, side dots (desktop), or **← / →** |
+| Presentation mode | **P**, the ▶ header button, or **Presentation mode** on the landing page. One section per screen with Previous / Next controls and a section counter. **Esc** exits. |
+| Full screen | **F** or the ⛶ header button |
+| Print / PDF | **🖨** header button, or **Ctrl/Cmd + P** |
+| Initiative details | Click any initiative card. **Esc** or click outside to close. |
+| Filter initiatives | All · Completed · In Delivery · In Procurement · In Progress · Blocked |
+| Position indicator | Progress bar across the top, plus the active nav button and side dots |
+
+Everything is real HTML text — selectable, searchable with Ctrl+F, and readable by screen
+readers. There are no slide screenshots anywhere: the only image file in the project is
+the Muhlah logo. All icons are inline SVG and all charts, bars, rings and timelines are
+CSS and SVG components.
+
+---
+
+## Files
 
 ```
 .
-├── index.html          All 10 slides
-├── css/styles.css      Muhlah branding, layout, transitions, print styles
-├── js/app.js           Navigation, 16:9 scaling, full screen, PDF export
+├── index.html          All eight sections
+├── css/styles.css      Muhlah palette, layout, animations, print theme
+├── js/app.js           Navigation, counters, filters, modals, tabs, presentation mode
 ├── assets/
-│   ├── muhlah-logo.png Muhlah logo (extracted from the source deck)
-│   ├── cover-bg.jpg    Title slide background
-│   └── closing-bg.jpg  Closing slide background
-├── .nojekyll           Required so GitHub Pages serves the files as-is
+│   └── muhlah-logo.png The only image in the project
+├── .nojekyll           Tells GitHub Pages to serve the folders as-is
 └── README.md
 ```
 
+All paths are relative (`assets/…`, `css/…`, `js/…`) with no leading `/`, so the site
+works correctly when hosted under a repository subpath such as
+`/Cybersecurity-Progress-/`.
+
 ---
 
-## 1. Running it locally
+## Running it locally
 
-**Option A — just open it (simplest).**
-Double-click `index.html`, or drag it into Chrome, Edge, Safari or Firefox.
-Everything is local, so it works straight from the file system.
+**Just open it.** Double-click `index.html`, or drag it into Chrome, Edge, Safari or
+Firefox. Everything is local, so it works straight from the file system.
 
-**Option B — local web server (recommended for a final check before deploying).**
+**Or serve it** (closest to how GitHub Pages will behave):
 
 ```bash
-cd muhlah-exco
+cd Cybersecurity-Progress-
 python3 -m http.server 8080
 ```
 
-Then open <http://localhost:8080> in your browser.
-
-If you have Node.js instead of Python:
-
-```bash
-npx serve .
-```
+Then open <http://localhost:8080>. With Node.js instead: `npx serve .`
 
 ---
 
-## 2. Uploading it to GitHub
+## Publishing to GitHub
 
-Create an empty repository on GitHub first (for example `muhlah-cyber-exco`),
-**without** a README, then from inside this folder:
+If the repository already exists, replace its contents with this project — `index.html`
+must sit in the repository root — then commit and push:
 
 ```bash
-cd muhlah-exco
+git add -A
+git commit -m "Rebuild as interactive executive cybersecurity progress website"
+git push
+```
+
+Setting it up from scratch:
+
+```bash
+cd Cybersecurity-Progress-
 git init
 git add .
-git commit -m "Muhlah cybersecurity executive progress report"
+git commit -m "Muhlah cybersecurity executive progress website"
 git branch -M main
-git remote add origin https://github.com/<your-username>/<your-repo>.git
+git remote add origin https://github.com/nusaybahalharbi/Cybersecurity-Progress-.git
 git push -u origin main
 ```
 
-Replace `<your-username>` and `<your-repo>` with your own values.
-
-> This deck is marked **Confidential · Board & ExCo**. Use a **private**
-> repository unless the content has been approved for publication. Note that
-> GitHub Pages on a private repository requires a GitHub Team or Enterprise plan.
+> This report is classified **Confidential · Board & ExCo**. GitHub Pages sites on a
+> public repository are visible to anyone with the URL. Use a private repository unless
+> the content has been approved for publication — note that Pages on a private repository
+> requires a GitHub Team or Enterprise plan.
 
 ---
 
-## 3. Enabling GitHub Pages
+## Enabling GitHub Pages
 
 1. Open the repository on GitHub.
-2. Go to **Settings → Pages** (left-hand menu).
-3. Under **Build and deployment → Source**, choose **Deploy from a branch**.
-4. Set **Branch** to `main` and the folder to `/ (root)`.
+2. Go to **Settings → Pages**.
+3. Under **Build and deployment → Source**, select **Deploy from a branch**.
+4. Set **Branch** to `main` and the folder to **`/ (root)`**.
 5. Click **Save**.
-6. Wait about a minute, then refresh the Pages settings screen. Your site will be
-   live at:
+6. Wait roughly a minute, then reload the Pages settings page. The site will be live at:
 
-   ```
-   https://<your-username>.github.io/<your-repo>/
-   ```
+```
+https://nusaybahalharbi.github.io/Cybersecurity-Progress-/
+```
 
-The included `.nojekyll` file stops GitHub from running Jekyll over the project,
-so the `css/`, `js/` and `assets/` folders are published exactly as they are.
-
----
-
-## 4. Presenting it in full-screen mode
-
-Open the deck, then:
-
-| Action | How |
-|---|---|
-| Enter / exit full screen | Press **F**, or click **⛶ Full screen** |
-| Next slide | **→**, **Space**, **Enter**, **Page Down**, or **Next ▶** |
-| Previous slide | **←**, **Backspace**, **Page Up**, or **◀ Prev** |
-| Jump to first / last slide | **Home** / **End** |
-| Exit full screen | **Esc** |
-| Swipe (tablet) | Swipe left or right |
-
-The slide canvas is a fixed 1920 × 1080 (16:9) stage that is scaled to fit
-whatever screen or projector you are on, so the layout never breaks or reflows
-mid-presentation. The current slide number is shown bottom-right on every slide
-and in the control bar, with a progress bar across the top.
-
-**Presenter tip:** open the deck, press **F**, and the on-screen controls stay
-available at the bottom of the screen without covering slide content. You can
-deep-link to a specific slide by adding its number to the URL — for example
-`.../index.html#7` opens slide 7.
+The `.nojekyll` file stops GitHub from running Jekyll over the project, so `css/`, `js/`
+and `assets/` are published exactly as they are. Because every path is relative, no
+further configuration is needed for the repository subpath.
 
 ---
 
-## 5. Exporting to PDF
+## Presenting to the Executive Committee
 
-Press **P**, or click **🖨 PDF**, or use your browser's **File → Print**. Then:
+1. Open the site and press **F** for full screen.
+2. Press **P** to enter presentation mode — one section fills the screen at a time.
+3. Move with **← / →** or the **Previous / Next** buttons. The counter shows your position.
+4. Press **Esc** to leave presentation mode and return to normal scrolling.
+
+The layout is comfortable on a 16:9 projector and reflows properly on tablet and phone.
+
+## Exporting a PDF
+
+Click the **🖨** button, or press **Ctrl/Cmd + P**. Then choose:
 
 - **Destination:** Save as PDF
 - **Layout:** Landscape
-- **Margins:** None
-- **Background graphics:** **On** (required — the deck is dark-themed)
+- **Background graphics:** On
 
-Each slide prints as one page. Chrome or Edge give the most accurate result.
+The print stylesheet switches the deck to a light, ink-friendly theme, breaks each section
+onto its own page, and expands every initiative's detail panel — so nothing that lives
+inside a modal on screen is missing from the PDF. Chrome or Edge give the most accurate
+result.
 
 ---
 
-## 6. Editing the content
+## Editing the content
 
-All slide content lives in `index.html`, one `<section class="slide">` per slide,
-in presentation order. Slide numbers, the counter and the progress bar are
-generated automatically from the number of `.slide` sections, so adding or
-removing a slide needs no other change.
+All content is written directly in `index.html`, one `<section class="section">` per
+navigation entry. Navigation, side dots, the presentation counter and the scroll-spy are
+all generated from those sections, so adding or removing a section needs no change to the
+JavaScript beyond adding the matching header link.
 
-Brand colours are defined once at the top of `css/styles.css`:
+Brand tokens are defined once at the top of `css/styles.css`:
 
 | Token | Value | Use |
 |---|---|---|
 | `--navy-800` | `#0F2536` | Primary background |
-| `--cyan-400` | `#5FC6F5` | Primary accent, section labels |
+| `--cyan-400` | `#5FC6F5` | Primary accent, section labels, in-delivery status |
 | `--green` | `#2FBF8C` | Completed status |
-| `--gold` | `#E0A53C` | In-procurement / in-recruitment status |
+| `--gold` | `#E0A53C` | In-procurement / in-recruitment status, confidentiality |
 | `--steel` | `#C4D6E3` | Secondary text |
 | `--ice` | `#EAF3FA` | Body text |
 
+The `@media print` block re-points these same tokens to their ink equivalents, which
+re-themes the entire document for PDF export without duplicating any rules.
+
 ---
 
-## 7. Browser support
+## Content note
 
-Tested against current Chrome, Edge, Firefox and Safari. Requires a browser with
-CSS custom properties and the Fullscreen API — all mainstream browsers released
-since 2020 qualify. No internet connection is needed once the files are on disk.
+Two figures are reproduced exactly as they appear in the source material and have not been
+reconciled:
+
+- The executive summary reports **55** governance documents developed with **53** pending
+  approval, while the documentation milestone reports a current total of **57**
+  cybersecurity documents.
+- The twelve budget components listed sum to **SAR 650,000**, while the approved envelope
+  is stated as **SAR 665,000**.
+
+Both are flagged in the relevant sections. Please reconcile them against the source
+records before the figures are used externally.
+
+---
+
+## Browser support
+
+Current Chrome, Edge, Firefox and Safari on desktop, tablet and phone. Requires CSS custom
+properties and the Fullscreen API. Respects `prefers-reduced-motion`: animations and
+smooth scrolling are disabled automatically for viewers who ask for that. No internet
+connection is needed once the files are on disk.
