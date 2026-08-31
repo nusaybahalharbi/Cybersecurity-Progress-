@@ -364,6 +364,11 @@ h2.sec-title {
 .kpi .v.green { color: var(--green); }
 .kpi .v.cyan { color: var(--cyan-400); }
 .kpi .l { margin-top: 10px; font-size: 13.5px; color: var(--steel); line-height: 1.45; }
+.kpi .v.kpi-word { font-size: clamp(22px, 2.2vw, 30px); line-height: 1.12; letter-spacing: -0.01em; }
+.kpi .v .from { color: var(--steel-dim); }
+.kpi .v .sep { color: var(--cyan-400); font-weight: 400; }
+.kpi .v .to { color: var(--green); }
+#mandatory-kpis .kpi { border-color: rgba(47, 191, 140, 0.32); }
 .kpi .sub { margin-top: 12px; }
 
 /* Progress ring */
