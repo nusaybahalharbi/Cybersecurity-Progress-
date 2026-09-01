@@ -4,7 +4,7 @@ An interactive executive website for Muhlah Zamaniyah Financing Company's cybers
 programme. Plain HTML, CSS and JavaScript — no frameworks, no build step, no CDN or
 other external dependency.
 
-**Confidential · Board & ExCo** · Reporting date 24 August 2026 · Nusaybah Alharbi, Cybersecurity Lead
+**Confidential · Board & ExCo** · Reporting date 1 September 2026 · Nusaybah Alharbi, Cybersecurity Lead
 
 Live site: <https://nusaybahalharbi.github.io/Cybersecurity-Progress-/>
 
@@ -21,7 +21,7 @@ Nine sections, each reachable from the fixed header, ordered as an executive nar
 | 3 | **Overview** | Achieved / Being implemented / Remaining / Needs management support |
 | 4 | **Progress** | Active initiatives — 14 filterable cards with detail modals |
 | 5 | **Roadmap** | Sequence and milestones — clickable timeline with a status legend |
-| 6 | **Solutions** | Solutions, capabilities and the approved FY2026 investment |
+| 6 | **Solutions** | Cybersecurity Capabilities & Technology Landscape — 21 capabilities across 8 domains |
 | 7 | **Documentation** | Achievements — the 13 → 57 milestone and governance evidence |
 | 8 | **Team** | Team development — the two SAMA-required roles |
 | 9 | **Next Steps** | Risks, dependencies, priorities and decisions required |
@@ -37,6 +37,7 @@ Nine sections, each reachable from the fixed header, ordered as an executive nar
 | Initiative details | Click any initiative card. **Esc** or click outside to close. |
 | Filter initiatives | All · Completed · In Delivery · In Procurement · In Progress · Planned · Blocked, with **Reset filters** |
 | Roadmap details | Click any milestone to open its reporting period, scope and dependencies |
+| Capability filters | All · Operational · Expansion in Progress · Implementation in Progress · Planned / Procurement · On-Demand, with **Reset filters**. Counters and chip counts are computed from the rendered cards at runtime, never hard-coded. |
 | Position indicator | Progress bar across the top, plus the active nav button and side dots |
 
 All KPI figures are written into the markup and animated from zero on first view only, so
@@ -179,21 +180,51 @@ re-themes the entire document for PDF export without duplicating any rules.
 
 ---
 
+## Capability landscape
+
+The Solutions section presents Muhlah's cybersecurity technology landscape in four status
+groups, with each card tagged by capability domain and opening a detail modal:
+
+| Group | Count | Members |
+|---|---|---|
+| **Operational** (green) | 9 | Netskope · BitRaser · Microsoft Purview DLP & Data Classification · CTM360 · KnowBe4 · Cognna SOC/SIEM · FortiGate · BlackBerry MDM · MFA |
+| **Contracted or Purchased** (blue / cyan) | 3 | DiPu (contract signed, on demand) · ManageEngine ServiceDesk Plus, CMDB & Asset Discovery (paid, configuration in progress) · Qualys Vulnerability Management (selected, payment in progress) |
+| **People Milestone** (completed badge) | 1 | DFIR / SOC L2 Specialist — recruitment completed, joining 1 September 2026 |
+| **Remaining or Dependent** (amber) | 7 | GRC platform · NDR · Penetration testing · Red teaming · External SAMA CSF ML3 assessment (end of 2026) · BIA independent validation · Network segmentation (critical dependency) |
+
+Colour system: green = operational, blue = purchased / configuration, cyan = selected /
+payment, amber = planned / dependent, filled green tick badge = recruitment milestone.
+
+Items absorbed into existing platforms and therefore **not** shown as separate procurement:
+application whitelisting (delivered through Netskope), DLP and data classification
+(delivered through Microsoft Purview), asset discovery (included in ManageEngine
+ServiceDesk Plus), awareness platform (KnowBe4, implemented).
+
+All counters and filter chip counts are computed from the rendered cards at runtime.
+
+## Budget view
+
+Two headline figures are shown exactly as supplied and are not recalculated:
+
+- **Final Budget Request — SAR 665,000**: the approved / requested FY2026 capability-uplift
+  budget presented in the budget sheet.
+- **Total Cybersecurity Budget View — SAR 1,590,400**: the total cybersecurity budget
+  reference view, including existing and provided capabilities, required capabilities,
+  services, and contingency allocations.
+
+An expandable disclosure maps each budget line to its current status. A per-component
+breakdown is not displayed: the "Budget by component" view was removed because it
+duplicated the same figures, and the underlying component sheet was not supplied with the
+1 September 2026 update.
+
 ## Content note
 
-Two figures are reproduced exactly as they appear in the source material and have not been
-reconciled:
+Documentation figures are reported as two distinct numbers and must not be conflated:
 
-- The executive summary reports **55** governance documents developed with **53** pending
-  approval, while the documentation milestone reports a current total of **57**
-  cybersecurity documents.
-- The twelve budget components listed sum to **SAR 650,000**, while the approved envelope
-  is stated as **SAR 665,000**.
+- **57** cybersecurity documents developed and maintained
+- **26** formally approved (31 not yet approved)
 
-Both are flagged in the relevant sections. Please reconcile them against the source
-records before the figures are used externally.
-
----
+The site never states that all 57 documents are approved.
 
 ## Browser support
 

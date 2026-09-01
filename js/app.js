@@ -206,7 +206,8 @@
     activeFilter = key;
     var shown = 0;
     cards.forEach(function (c) {
-      var match = key === 'all' || c.dataset.status === key;
+      var match = key === 'all' || c.dataset.status === key ||
+                  (key === 'purchased' && c.dataset.status === 'selected');
       c.hidden = !match;
       if (match) shown++;
     });
@@ -215,31 +216,33 @@
     });
     emptyState.classList.toggle('show', shown === 0);
 
-    // Show the empty-state copy that actually explains this filter
-    $$('#empty-state [data-empty]').forEach(function (sp) {
-      sp.hidden = sp.dataset.empty !== (['blocked', 'planned'].indexOf(key) > -1 ? key : 'generic');
-    });
-
     var label = filterBtns.filter(function (b) { return b.dataset.filter === key; })[0];
     var name = label ? label.childNodes[0].textContent.trim() : 'All';
     filterStatus.textContent = shown === 0
       ? 'No items match \u201c' + name + '\u201d'
-      : 'Showing ' + shown + (key === 'all' ? ' items' : ' of 14 \u00b7 ' + name);
+      : 'Showing ' + shown + ' of ' + cards.length + (key === 'all' ? ' items' : ' \u00b7 ' + name);
 
     resetBtn.disabled = key === 'all';
     // Clearing the filter also clears any card selection highlight
     if (key === 'all') cards.forEach(function (c) { c.classList.remove('selected'); });
   }
 
-  // Dim filters that legitimately have no items, so the count reads as information
+  // Counts are computed from the rendered cards, never hard-coded in the markup
   filterBtns.forEach(function (b) {
+    var key = b.dataset.filter;
+    var n = key === 'all' ? cards.length
+          : cards.filter(function (c) {
+              return c.dataset.status === key ||
+                     (key === 'purchased' && c.dataset.status === 'selected');
+            }).length;
     var c = b.querySelector('.cnt');
-    if (c && c.textContent.trim() === '0') b.classList.add('zero');
+    if (c) c.textContent = n;
+    if (n === 0) b.classList.add('zero');
   });
 
   resetBtn.addEventListener('click', function () {
     applyFilter('all');
-    filterStatus.textContent = 'Filters reset \u00b7 showing all 14 items';
+    filterStatus.textContent = 'Filters reset \u00b7 showing all ' + cards.length + ' items';
     toast('Filters reset');
   });
 
@@ -248,6 +251,93 @@
   });
 
   applyFilter('all');
+
+  /* ======================================================================
+     Capability landscape — counters computed from the cards, status filter
+     ====================================================================== */
+  var capCards = $$('#cap-domains .capcard');
+  var capDomains = $$('#cap-domains .domain');
+  var capFilters = $$('.cap-filter');
+  var capEmpty = $('#cap-empty');
+  var capStatus = $('#cap-status');
+  var capReset = $('#reset-caps');
+
+  // Group statuses into the four executive counters. Nothing is hard-coded:
+  // each figure is the length of an actual filter over the rendered cards.
+  // Each counter is the length of a real filter over the rendered cards
+  var GROUPS = {
+    operational: ['operational'],
+    contracted:  ['contracted', 'purchased', 'selected'],
+    people:      ['recruited'],
+    remaining:   ['required', 'dependent', 'critical', 'planned2026']
+  };
+
+  function countStatus(list) {
+    return capCards.filter(function (c) { return list.indexOf(c.dataset.status) > -1; }).length;
+  }
+  function countGroup(g) {
+    return capCards.filter(function (c) { return c.dataset.group === g; }).length;
+  }
+
+  if (capCards.length) {
+    // Counter KPI cards
+    Object.keys(GROUPS).forEach(function (k) {
+      var el = $('[data-counter="' + k + '"]');
+      if (!el) return;
+      var n = countStatus(GROUPS[k]);
+      el.dataset.count = n;      // lets the shared count-up animation pick it up
+      el.textContent = n;        // visible immediately, and without JS-driven motion
+    });
+
+    // Filter chip counts
+    $$('[data-cnt]').forEach(function (el) {
+      var k = el.dataset.cnt;
+      // 'planned' groups Planned / Procurement with Planned / Dependency, so the
+      // chip count must use the same grouping the filter uses.
+      el.textContent = k === 'all' ? capCards.length
+        : (k.slice(-2) === '-g' ? countGroup(k) : countStatus(GROUPS[k] || [k]));
+      if (el.textContent === '0') el.closest('.filter').classList.add('zero');
+    });
+
+    var capActive = 'all';
+    function applyCap(key) {
+      capActive = key;
+      var shown = 0;
+      capCards.forEach(function (c) {
+        var match = key === 'all' ||
+                    (key.slice(-2) === '-g' ? c.dataset.group === key : c.dataset.status === key);
+        c.hidden = !match;
+        if (match) shown++;
+      });
+      // Hide a domain group entirely when nothing in it matches
+      capDomains.forEach(function (d) {
+        var vis = $$('.capcard', d).filter(function (c) { return !c.hidden; });
+        d.hidden = vis.length === 0;
+        var cnt = $('.domain-count', d);
+        if (cnt) cnt.textContent = vis.length;
+      });
+      capFilters.forEach(function (b) {
+        b.setAttribute('aria-pressed', b.dataset.cap === key ? 'true' : 'false');
+      });
+      capEmpty.classList.toggle('show', shown === 0);
+      var lbl = capFilters.filter(function (b) { return b.dataset.cap === key; })[0];
+      var name = lbl ? lbl.childNodes[0].textContent.trim() : 'All';
+      capStatus.textContent = shown === 0
+        ? 'No capabilities match \u201c' + name + '\u201d'
+        : 'Showing ' + shown + ' of ' + capCards.length + (key === 'all' ? ' capabilities' : ' \u00b7 ' + name);
+      capReset.disabled = key === 'all';
+    }
+
+    capFilters.forEach(function (b) {
+      b.addEventListener('click', function () { applyCap(b.dataset.cap); });
+    });
+    capReset.addEventListener('click', function () {
+      applyCap('all');
+      capStatus.textContent = 'Filters reset \u00b7 showing all ' + capCards.length + ' capabilities';
+      toast('Filters reset');
+    });
+    applyCap('all');
+  }
 
   /* ======================================================================
      Modal
@@ -436,11 +526,15 @@
   }
 
   function enterPresent(startId) {
+    // Resolve the target section BEFORE adding the .present class. That class
+    // hides every section, which collapses their bounding rects to zero and
+    // makes currentSection() always report the last section.
+    var i = startId ? sectionIds.indexOf(startId) : sectionIds.indexOf(currentSection());
+    if (i < 0) i = 0;
     document.body.classList.add('present');
     document.body.style.overflow = 'hidden';
     $$('.reveal').forEach(function (el) { el.classList.add('in'); });
-    var i = startId ? sectionIds.indexOf(startId) : sectionIds.indexOf(currentSection());
-    showSlide(i < 0 ? 0 : i);
+    showSlide(i);
     toast('Presentation mode · ← → to move, Esc to exit');
   }
 
